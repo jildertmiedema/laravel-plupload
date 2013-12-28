@@ -20,7 +20,7 @@ class LaravelPluploadServiceProvider extends ServiceProvider {
     {
         $this->app['plupload'] = $this->app->share(function($app)
         {
-            return new Manager();
+            return $app->make('JildertMiedema\LaravelPlupload\Manager');
         });
     }
 

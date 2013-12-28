@@ -74,7 +74,9 @@ class Builder {
         $settings['container'] = $prefix.'-container';
         $settings['max_file_size'] = '10000000000';
         $settings['url'] = '/upload';
-
+        $settings['headers'] = [
+            'Accept' => 'application/json'
+        ];
         return $this->createHtml($prefix, $settings);
     }
 }
