@@ -1,4 +1,4 @@
-<?php namespace Jildertmiedema\LaravelPlupload;
+<?php namespace JildertMiedema\LaravelPlupload;
 
 use Illuminate\Support\ServiceProvider;
 

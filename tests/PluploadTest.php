@@ -2,7 +2,7 @@
 
 use Mockery as m;
 
-use Jildertmiedema\LaravelPlupload\Plupload;
+use JildertMiedema\LaravelPlupload\Plupload;
 
 class PluploadTest extends PHPUnit_Framework_TestCase {
     public function tearDown()

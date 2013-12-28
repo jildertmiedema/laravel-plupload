@@ -2,7 +2,7 @@
 
 use Mockery as m;
 
-use Jildertmiedema\LaravelPlupload\Builder;
+use JildertMiedema\LaravelPlupload\Builder;
 
 class BuilderTest extends PHPUnit_Framework_TestCase {
 
@@ -13,7 +13,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
 
     public function testGetContainer()
     {
-        $plupload = m::mock('Jildertmiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
 
         $builder = new Builder($plupload);
 
@@ -24,7 +24,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
 
     public function testAddScripts()
     {
-        $plupload = m::mock('Jildertmiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
 
         $builder = new Builder($plupload);
 
@@ -36,7 +36,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
 
     public function testCreateJsInit()
     {
-        $plupload = m::mock('Jildertmiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
 
         $builder = new Builder($plupload);
 
@@ -47,7 +47,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
 
     public function testCreateJsRun()
     {
-        $plupload = m::mock('Jildertmiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
 
         $builder = new Builder($plupload);
 
