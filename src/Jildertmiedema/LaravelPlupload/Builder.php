@@ -73,7 +73,7 @@ class Builder {
         $settings['browse_button'] = $prefix.'-browse-button';
         $settings['container'] = $prefix.'-container';
         $settings['max_file_size'] = '10000000000';
-        $settings['url'] = '?';
+        $settings['url'] = '/upload';
 
         return $this->createHtml($prefix, $settings);
     }
