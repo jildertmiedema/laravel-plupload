@@ -19,17 +19,10 @@ class Manager {
         return Builder::make($settings);
     }
 
-    public function receive($name, Closure $receiver)
+    public function receive($name, Closure $handler)
     {
-        $response = [];
-        $response['jsonrpc'] = "2.0";
+        $receiver = new Receiver($this->request);
 
-        if ($this->request->file($name)) {
-            $result = $receiver($this->request->file($name));
-
-            $response['result'] = $result;
-        }
-
-        return $response;
+        return $receiver->receive($name, $handler);
     }
 }
