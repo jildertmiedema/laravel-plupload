@@ -4,34 +4,18 @@ use Illuminate\View\Compilers\CompilerInterface;
 
 class Builder {
 
-    /**
-     * Plupload Instance
-     *
-     * @var Plupload
-     */
-    protected $plupload;
+    private $settings;
+    private $prefix;
 
-    /**
-     * Constructor
-     *
-     * @param  Plupload $plupload
-     * @return void
-     */
-    public function __construct()
+    public function createJsInit()
     {
-        //Plupload $plupload
-        //$this->plupload = $plupload;
+        return sprintf('var %s_uploader = new plupload.Uploader(%s);', $this->prefix, json_encode($this->getSettings()));
     }
 
-    public function createJsInit($prefix, array $settings)
+    public function createJsRun()
     {
-        return sprintf('var %s_uploader = new plupload.Uploader(%s);', $prefix, json_encode($settings));
-    }
-
-    public function createJsRun($prefix)
-    {
-        $script = sprintf('%s_uploader.init();', $prefix);
-        $script .= sprintf('document.getElementById(\'%s-start-upload\').onclick = function() {%s_uploader.start();};', $prefix, $prefix);
+        $script = sprintf('%s_uploader.init();', $this->prefix);
+        $script .= sprintf('document.getElementById(\'%s-start-upload\').onclick = function() {%s_uploader.start();};', $this->prefix, $this->prefix);
 
         return $script;
     }
@@ -42,8 +26,9 @@ class Builder {
         return sprintf('<script type="text/javascript" src="%s"></script>', $scriptUrl);
     }
 
-    public function getContainer($prefix)
+    public function getContainer()
     {
+        $prefix = $this->prefix;
         $html = "<div id=\"{$prefix}-container\">";
         $html .= "<button type=\"button\" id=\"{$prefix}-browse-button\" class=\"btn btn-primary\">Browse...</button>";
         $html .= "<button type=\"button\" id=\"{$prefix}-start-upload\" class=\"btn btn-success\">Upload</button>";
@@ -52,31 +37,71 @@ class Builder {
         return $html;
     }
 
-    public function createHtml($prefix, array $settings)
+    public function createHtml()
     {
         $html = '';
-        $html .= $this->getContainer($prefix);
+        $html .= $this->getContainer();
         $html .= $this->addScripts();
         $html .= '<script type="text/javascript">';
-        $html .= $this->createJsInit($prefix, $settings);
-        $html .= $this->createJsRun($prefix);
+        $html .= $this->createJsInit();
+        $html .= $this->createJsRun();
         $html .= '</script>';
 
         return $html;
     }
 
-    public function make()
+    public function getDefaultSettings()
     {
-        $prefix = 'upload1';
         $settings = [];
         $settings['runtimes'] = 'html5';
-        $settings['browse_button'] = $prefix.'-browse-button';
-        $settings['container'] = $prefix.'-container';
-        $settings['max_file_size'] = '10000000000';
+        $settings['browse_button'] = $this->prefix.'-browse-button';
+        $settings['container'] = $this->prefix.'-container';
         $settings['url'] = '/upload';
         $settings['headers'] = [
             'Accept' => 'application/json'
         ];
-        return $this->createHtml($prefix, $settings);
+
+        return $settings;
+    }
+
+    public function setDefaults()
+    {
+        $this->updateSettings($this->getDefaultSettings());
+    }
+
+
+    public function getSettings()
+    {
+        $settings = $this->getDefaultSettings();
+
+        $this->settings = $this->settings?:[];
+
+        foreach ($this->settings as $name => $value) {
+            $settings[$name] = $value;
+        }
+        return $settings;
+    }
+
+    public function updateSettings(array $settings)
+    {
+        foreach ($settings as $name => $value) {
+            $this->settings[$name] = $value;
+        }
+    }
+
+    public function setPrefix($value)
+    {
+        $this->prefix = $value;
+    }
+
+    public static function make(array $settings = null)
+    {
+        $instance = new static();
+
+        if ($settings) {
+            $instance->updateSettings($settings);
+        }
+
+        return $instance->createHtml();
     }
 }

@@ -14,9 +14,9 @@ class Manager {
         $this->request = $request;
     }
 
-    public function make ()
+    public function make (array $settings = null)
     {
-        return (new Builder)->make();
+        return Builder::make($settings);
     }
 
     public function receive($name, Closure $receiver)
