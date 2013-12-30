@@ -94,7 +94,21 @@ class Builder {
         $this->prefix = $value;
     }
 
+    public function withPrefix($value)
+    {
+        $this->setPrefix($value);
+
+        return $this;
+    }
+
     public static function make(array $settings = null)
+    {
+        $instance = static::init($settings);
+
+        return $instance->createHtml();
+    }
+
+    public static function init(array $settings = null)
     {
         $instance = new static();
 
@@ -102,6 +116,6 @@ class Builder {
             $instance->updateSettings($settings);
         }
 
-        return $instance->createHtml();
+        return $instance;
     }
 }

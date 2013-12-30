@@ -19,6 +19,11 @@ class Manager {
         return Builder::make($settings);
     }
 
+    public function init (array $settings = null)
+    {
+        return Builder::init($settings);
+    }
+
     public function receive($name, Closure $handler)
     {
         $receiver = new Receiver($this->request);
