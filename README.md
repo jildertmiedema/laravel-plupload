@@ -36,6 +36,12 @@ And:
         'Plupload'        => 'JildertMiedema\LaravelPlupload\Facades\Plupload',
     ),
 ```
+
+To publish the assets:
+
+```sh
+	php artisan asset:publish "jildertmiedema/laravel-plupload"
+```
 ## Receiving files
 
 Use this route to receive a file on the url `/upload`. Of cource you can place this is a controller.
