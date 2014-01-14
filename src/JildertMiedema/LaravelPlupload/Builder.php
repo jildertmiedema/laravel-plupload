@@ -52,7 +52,7 @@ class Builder {
 
     public function getDefaultSettings()
     {
-        $settings = [];
+        $settings = array();
         $settings['runtimes'] = 'html5';
         $settings['browse_button'] = $this->prefix.'-browse-button';
         $settings['container'] = $this->prefix.'-container';
@@ -74,7 +74,7 @@ class Builder {
     {
         $settings = $this->getDefaultSettings();
 
-        $this->settings = $this->settings?:[];
+        $this->settings = $this->settings?:array();
 
         foreach ($this->settings as $name => $value) {
             $settings[$name] = $value;
