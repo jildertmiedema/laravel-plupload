@@ -75,7 +75,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
         $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
 
         $builder = new Builder($plupload);
-        $builder->updateSettings(['a' => 'b']);
+        $builder->updateSettings(array('a' => 'b'));
 
         $result = $builder->getSettings();
 

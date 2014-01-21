@@ -57,9 +57,9 @@ class Builder {
         $settings['browse_button'] = $this->prefix.'-browse-button';
         $settings['container'] = $this->prefix.'-container';
         $settings['url'] = '/upload';
-        $settings['headers'] = [
+        $settings['headers'] = array(
             'Accept' => 'application/json'
-        ];
+        );
 
         return $settings;
     }
