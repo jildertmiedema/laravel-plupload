@@ -16,11 +16,10 @@ class Receiver {
 
     public function getPath()
     {
-        $path = storage_path() . '/pluload';
+        $path = storage_path() . '/plupload';
 
-        if (!file_exists($path))
-        {
-            mkdir($path);
+        if (!is_dir($path)) {
+            mkdir($path, 0777, true);
         }
 
         return $path;
