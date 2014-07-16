@@ -13,7 +13,7 @@ Composer add
 	"require": {
 		// ...
 
-        "jildert-miedema/laravel-plupload": "dev-master"
+        "jildertmiedema/laravel-plupload": "dev-master"
     },
 ```
 
