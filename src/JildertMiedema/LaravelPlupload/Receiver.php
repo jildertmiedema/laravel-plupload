@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Http\Request;
+use JildertMiedema\LaravelPlupload\PluploadException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Receiver {
@@ -91,7 +92,7 @@ class Receiver {
 
     public function receive($name, Closure $handler)
     {
-        $response = array();
+        $response = [];
         $response['jsonrpc'] = "2.0";
 
         if ($this->hasChunks()) {
