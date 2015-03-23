@@ -92,7 +92,7 @@ class Receiver {
 
     public function receive($name, Closure $handler)
     {
-        $response = [];
+		$response = array();
         $response['jsonrpc'] = "2.0";
 
         if ($this->hasChunks()) {
