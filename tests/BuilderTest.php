@@ -30,7 +30,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
         $result = $builder->addScripts();
 
-        $this->assertEquals('<script type="text/javascript" src="/packages/jildertmiedema/laravel-plupload/assets/js/plupload.full.min.js"></script>', $result);
+        $this->assertEquals('<script type="text/javascript" src="/vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js"></script>', $result);
     }
 
     public function testCreateJsInit()
