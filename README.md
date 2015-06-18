@@ -7,44 +7,36 @@ Handeling chunked uploads.
 
 ## Installation
 
-Composer add
+Install using composer 
 
-```json
-	"require": {
-		// ...
-
-        "jildertmiedema/laravel-plupload": "dev-master"
-    },
+```sh
+composer require jildertmiedema/laravel-plupload
 ```
 
-Changes `app.config`
+Add the provider to `config/app.php`
 
 ```php
-	'providers' => array(
-		// ...
-
-		'JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider',
-	)
+'providers' => [
+    JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider::class,
+]
 ```
 
-
-And:
+If you want to use te build in builder insert the facade
 
 ```php
-    'aliases' => array(
-        // ...
-        'Plupload'        => 'JildertMiedema\LaravelPlupload\Facades\Plupload',
-    ),
+'aliases' => array(
+	'Plupload' => JildertMiedema\LaravelPlupload\Facades\Plupload::class,
+),
 ```
 
 To publish the assets:
 
 ```sh
-	php artisan asset:publish "jildertmiedema/laravel-plupload"
+php artisan vendor:publish
 ```
 ## Receiving files
 
-Use this route to receive a file on the url `/upload`. Of cource you can place this is a controller.
+Use this route to receive a file on the url `/upload`. Of course you can place this is a controller.
 
 ```php
 Route::post('/upload', function()
