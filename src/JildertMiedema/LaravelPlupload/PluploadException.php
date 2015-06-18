@@ -1,3 +1,7 @@
-<?php namespace JildertMiedema\LaravelPlupload;
+<?php
 
-class PluploadException extends \Exception {}
+namespace JildertMiedema\LaravelPlupload;
+
+class PluploadException extends \Exception
+{
+}

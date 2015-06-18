@@ -1,11 +1,10 @@
 <?php
 
+use JildertMiedema\LaravelPlupload\Builder;
 use Mockery as m;
 
-use JildertMiedema\LaravelPlupload\Builder;
-
-class BuilderTest extends PHPUnit_Framework_TestCase {
-
+class BuilderTest extends PHPUnit_Framework_TestCase
+{
     public function tearDown()
     {
         Mockery::close();
@@ -33,7 +32,6 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals('<script type="text/javascript" src="/packages/jildertmiedema/laravel-plupload/assets/js/plupload.full.min.js"></script>', $result);
     }
-
 
     public function testCreateJsInit()
     {
@@ -75,7 +73,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
         $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
 
         $builder = new Builder($plupload);
-        $builder->updateSettings(array('a' => 'b'));
+        $builder->updateSettings(['a' => 'b']);
 
         $result = $builder->getSettings();
 
@@ -94,5 +92,4 @@ class BuilderTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('abcd-browse-button', $result['browse_button']);
         $this->assertEquals('abcd-container', $result['container']);
     }
-
 }

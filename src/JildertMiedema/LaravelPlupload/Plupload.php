@@ -1,31 +1,33 @@
-<?php namespace JildertMiedema\LaravelPlupload;
+<?php
+
+namespace JildertMiedema\LaravelPlupload;
 
 use Illuminate\Config\Repository as Config;
 
-class Plupload {
-
+class Plupload
+{
         /**
-         * Config Instance
+         * Config Instance.
          *
          * @var Illuminate\Config\Repository
          */
         protected $config;
 
         /**
-         * Constructor
+         * Constructor.
          *
          * @param  Illuminate\Config\Repository $config
-         * @return void
          */
         public function __construct(Config $config)
         {
-                $this->config = $config;
+            $this->config = $config;
         }
 
     /**
-     * Get a plupload configuration option
+     * Get a plupload configuration option.
      *
-     * @param  string $option
+     * @param string $option
+     *
      * @return mixed
      */
     public function getConfigOption($option)
@@ -33,7 +35,8 @@ class Plupload {
         return $this->config->get("laravel-plupload::plupload.{$option}");
     }
 
-    public function getDefaultView() {
+    public function getDefaultView()
+    {
         return $this->getConfigOption('view');
     }
 }

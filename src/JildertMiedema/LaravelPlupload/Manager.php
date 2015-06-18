@@ -1,12 +1,12 @@
-<?php namespace JildertMiedema\LaravelPlupload;
+<?php
 
-use Input;
+namespace JildertMiedema\LaravelPlupload;
+
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\View\Compilers\CompilerInterface;
 
-class Manager {
-
+class Manager
+{
     protected $request;
 
     public function __construct(Request $request)
@@ -14,12 +14,12 @@ class Manager {
         $this->request = $request;
     }
 
-    public function make (array $settings = null)
+    public function make(array $settings = null)
     {
         return Builder::make($settings);
     }
 
-    public function init (array $settings = null)
+    public function init(array $settings = null)
     {
         return Builder::init($settings);
     }

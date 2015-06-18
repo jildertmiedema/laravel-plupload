@@ -1,9 +1,9 @@
-<?php namespace JildertMiedema\LaravelPlupload;
+<?php
 
-use Illuminate\View\Compilers\CompilerInterface;
+namespace JildertMiedema\LaravelPlupload;
 
-class Builder {
-
+class Builder
+{
     private $settings;
     private $prefix;
 
@@ -23,6 +23,7 @@ class Builder {
     public function addScripts()
     {
         $scriptUrl = '/vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js';
+
         return sprintf('<script type="text/javascript" src="%s"></script>', $scriptUrl);
     }
 
@@ -32,7 +33,7 @@ class Builder {
         $html = "<div id=\"{$prefix}-container\">";
         $html .= "<button type=\"button\" id=\"{$prefix}-browse-button\" class=\"btn btn-primary\">Browse...</button>";
         $html .= "<button type=\"button\" id=\"{$prefix}-start-upload\" class=\"btn btn-success\">Upload</button>";
-        $html .= "</div>";
+        $html .= '</div>';
 
         return $html;
     }
@@ -52,15 +53,15 @@ class Builder {
 
     public function getDefaultSettings()
     {
-        $settings = array();
+        $settings = [];
         $settings['runtimes'] = 'html5';
         $settings['browse_button'] = $this->prefix.'-browse-button';
         $settings['container'] = $this->prefix.'-container';
         $settings['url'] = '/upload';
-        $settings['headers'] = array(
+        $settings['headers'] = [
             'Accept' => 'application/json',
             'X-CSRF-TOKEN' => csrf_token(),
-        );
+        ];
 
         return $settings;
     }
@@ -70,16 +71,16 @@ class Builder {
         $this->updateSettings($this->getDefaultSettings());
     }
 
-
     public function getSettings()
     {
         $settings = $this->getDefaultSettings();
 
-        $this->settings = $this->settings?:array();
+        $this->settings = $this->settings ?: [];
 
         foreach ($this->settings as $name => $value) {
             $settings[$name] = $value;
         }
+
         return $settings;
     }
 
