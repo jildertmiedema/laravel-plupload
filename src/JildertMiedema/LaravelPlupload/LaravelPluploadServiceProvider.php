@@ -25,13 +25,25 @@ class LaravelPluploadServiceProvider extends ServiceProvider {
     }
 
     /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../../public/assets' => public_path('vendor/jildertmiedema/laravel-plupload/'),
+        ], 'public');
+    }
+
+    /**
      * Get the services provided by the provider.
      *
      * @return array
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
 }

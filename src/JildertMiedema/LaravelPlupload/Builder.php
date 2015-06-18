@@ -22,7 +22,7 @@ class Builder {
 
     public function addScripts()
     {
-        $scriptUrl = '/packages/jildertmiedema/laravel-plupload/assets/js/plupload.full.min.js';
+        $scriptUrl = '/vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js';
         return sprintf('<script type="text/javascript" src="%s"></script>', $scriptUrl);
     }
 
