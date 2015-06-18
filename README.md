@@ -25,7 +25,7 @@ If you want to use te build in builder insert the facade
 
 ```php
 'aliases' => array(
-	'Plupload' => JildertMiedema\LaravelPlupload\Facades\Plupload::class,
+    'Plupload' => JildertMiedema\LaravelPlupload\Facades\Plupload::class,
 ),
 ```
 
@@ -41,12 +41,12 @@ Use this route to receive a file on the url `/upload`. Of course you can place t
 ```php
 Route::post('/upload', function()
 {
-	return Plupload::receive('file', function ($file)
-	{
-		$file->move(storage_path() . '/test/', $file->getClientOriginalName());
+    return Plupload::receive('file', function ($file)
+    {
+        $file->move(storage_path() . '/test/', $file->getClientOriginalName());
 
-		return 'ready';
-	});
+        return 'ready';
+    });
 });
 ```
 
@@ -63,10 +63,10 @@ Use the [examples](http://www.plupload.com/examples/) found on the plupload site
 To use the builder for creating send form you can use this function:
 
 ```php
-	echo Plupload::make([
-		'url' => 'upload',
-		'chunk_size' => '100kb',
-	]);
+echo Plupload::make([
+    'url' => 'upload',
+    'chunk_size' => '100kb',
+]);
 ```
 
 **Note:** The options given to the make function are found on in the [pluload documentation](http://www.plupload.com/docs/Options).
@@ -75,10 +75,10 @@ To use the builder for creating send form you can use this function:
 ### 2. Extended plupload builder
 
 ```php
-	echo Plupload::init([
-		'url' => 'upload',
-		'chunk_size' => '100kb',
-	])->withPrefix('current')->createHtml();
+echo Plupload::init([
+    'url' => 'upload',
+    'chunk_size' => '100kb',
+])->withPrefix('current')->createHtml();
 ```
 
 
