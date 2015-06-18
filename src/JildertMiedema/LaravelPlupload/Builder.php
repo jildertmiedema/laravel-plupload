@@ -58,7 +58,8 @@ class Builder {
         $settings['container'] = $this->prefix.'-container';
         $settings['url'] = '/upload';
         $settings['headers'] = array(
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
+            'X-CSRF-TOKEN' => csrf_token(),
         );
 
         return $settings;
