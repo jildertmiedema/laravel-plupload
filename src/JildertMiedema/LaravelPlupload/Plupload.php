@@ -2,21 +2,21 @@
 
 namespace JildertMiedema\LaravelPlupload;
 
-use Illuminate\Config\Repository as Config;
+use Illuminate\Contracts\Config\Repository as Config;
 
 class Plupload
 {
         /**
          * Config Instance.
          *
-         * @var Illuminate\Config\Repository
+         * @var \Illuminate\Contracts\Config\Repository
          */
         protected $config;
 
         /**
          * Constructor.
          *
-         * @param  Illuminate\Config\Repository $config
+         * @param \Illuminate\Contracts\Config\Repository
          */
         public function __construct(Config $config)
         {

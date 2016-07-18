@@ -5,8 +5,7 @@ namespace JildertMiedema\LaravelPlupload\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Illuminate\Session\SessionManager
- * @see \Illuminate\Session\Store
+ * @see \JildertMiedema\LaravelPlupload\Manager
  */
 class Plupload extends Facade
 {

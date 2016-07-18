@@ -33,6 +33,8 @@ class Receiver
         if ($this->request->file($name)) {
             return $handler($this->request->file($name));
         }
+
+        return false;
     }
 
     private function appendData($filePathPartial, UploadedFile $file)
@@ -54,6 +56,8 @@ class Receiver
 
     public function receiveChunks($name, Closure $handler)
     {
+        $result = false;
+
         if ($this->request->file($name)) {
             $file = $this->request->file($name);
             $chunk = (int) $this->request->get('chunk', false);
@@ -71,8 +75,6 @@ class Receiver
                 $result = $handler($file);
 
                 @unlink($filePath);
-            } else {
-                $result = false;
             }
         }
 

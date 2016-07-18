@@ -18,8 +18,8 @@ class LaravelPluploadServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['plupload'] = $this->app->share(function ($app) {
-            return $app->make('JildertMiedema\LaravelPlupload\Manager', ['request' => $app['request']]);
+        $this->app->singleton('plupload', function ($app) {
+            return $this->app->make(Manager::class, ['request' => $app['request']]);
         });
     }
 
