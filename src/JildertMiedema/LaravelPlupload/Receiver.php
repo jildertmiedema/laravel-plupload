@@ -4,7 +4,7 @@ namespace JildertMiedema\LaravelPlupload;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Http\UploadedFile;
 
 class Receiver
 {
