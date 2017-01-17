@@ -75,9 +75,11 @@ add in your blade file
 in your JS file, add
 
 ```js
-headers: {
+$.ajaxSetup({
+    headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
+    }
+});
 ```
 
 Eg:
