@@ -6,6 +6,7 @@ class Builder
 {
     private $settings;
     private $prefix;
+    private $scriptUrl = '/vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js';
 
     public function createJsInit()
     {
@@ -22,9 +23,7 @@ class Builder
 
     public function addScripts()
     {
-        $scriptUrl = '/vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js';
-
-        return sprintf('<script type="text/javascript" src="%s"></script>', $scriptUrl);
+        return sprintf('<script type="text/javascript" src="%s"></script>', $this->scriptUrl);
     }
 
     public function getContainer()
@@ -99,6 +98,18 @@ class Builder
     public function withPrefix($value)
     {
         $this->setPrefix($value);
+
+        return $this;
+    }
+
+    public function setScriptUrl($value)
+    {
+        $this->scriptUrl = $value;
+    }
+
+    public function withScriptUrl($value)
+    {
+        $this->setScriptUrl($value);
 
         return $this;
     }
