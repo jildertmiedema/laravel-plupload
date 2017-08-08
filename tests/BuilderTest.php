@@ -92,4 +92,17 @@ class BuilderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('abcd-browse-button', $result['browse_button']);
         $this->assertEquals('abcd-container', $result['container']);
     }
+
+    public function testSetScriptUrl()
+    {
+        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+
+        $builder = new Builder($plupload);
+        $builder->setPrefix('abcd');
+        $builder->setScriptUrl('path/to/plupload.js');
+
+        $html = $builder->createHtml();
+
+        $this->assertEquals('<div id="abcd-container"><button type="button" id="abcd-browse-button" class="btn btn-primary">Browse...</button><button type="button" id="abcd-start-upload" class="btn btn-success">Upload</button></div><script type="text/javascript" src="path/to/plupload.js"></script><script type="text/javascript">var abcd_uploader = new plupload.Uploader({"runtimes":"html5","browse_button":"abcd-browse-button","container":"abcd-container","url":"\/upload","headers":{"Accept":"application\/json","X-CSRF-TOKEN":"test-token"}});abcd_uploader.init();document.getElementById(\'abcd-start-upload\').onclick = function() {abcd_uploader.start();};</script>', $html);
+    }
 }
