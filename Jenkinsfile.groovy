@@ -20,7 +20,7 @@ pipeline {
         }
         stage('install') {
             steps {
-                sh './composer.phar install'
+                sh './composer.phar install --no-progress'
             }
         }
         stage('test') {
