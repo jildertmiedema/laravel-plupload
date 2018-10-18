@@ -3,13 +3,29 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Getting strated!"'
+                sh 'echo "Getting started!"'
                 checkout scm
+                script {
+                    if (fileExists('composer.phar')) {
+                        echo 'composer found'
+                    } else {
+                        sh 'php -r "copy(\'https://getcomposer.org/installer\', \'composer-setup.php\');"'
+                        sh 'php composer-setup.php'
+                        sh 'php -r "unlink(\'composer-setup.php\');"'
+                        sh 'cp composer.phar composer.phar'
+                    }
+                }
+                sh './composer.phar self-update'
             }
         }
-        stage('test') {
+        stage('install') {
             steps {
-                sh 'composer install'
+                sh './composer.phar install'
+            }
+        }
+        stage('install') {
+            steps {
+                sh './vendor/bin/phpunit'
             }
         }
     }
