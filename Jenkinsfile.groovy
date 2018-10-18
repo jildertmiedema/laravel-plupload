@@ -23,7 +23,7 @@ pipeline {
                 sh './composer.phar install'
             }
         }
-        stage('install') {
+        stage('test') {
             steps {
                 sh './vendor/bin/phpunit'
             }
