@@ -8,6 +8,7 @@ pipeline {
                 script {
                     if (fileExists('composer.phar')) {
                         echo 'composer found'
+                        sh './composer.phar self-update'
                     } else {
                         sh 'php -r "copy(\'https://getcomposer.org/installer\', \'composer-setup.php\');"'
                         sh 'php composer-setup.php'
@@ -15,7 +16,6 @@ pipeline {
                         sh 'cp composer.phar composer.phar'
                     }
                 }
-                sh './composer.phar self-update'
             }
         }
         stage('install') {
