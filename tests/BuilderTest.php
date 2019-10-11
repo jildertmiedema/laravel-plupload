@@ -2,10 +2,11 @@
 
 use JildertMiedema\LaravelPlupload\Builder;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
-class BuilderTest extends PHPUnit_Framework_TestCase
+class BuilderTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
@@ -42,7 +43,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
         $result = $builder->createJsInit();
 
-        $this->assertContains('var test_uploader = new plupload.Uploader({', $result);
+        $this->assertStringContainsString('var test_uploader = new plupload.Uploader({', $result);
     }
 
     public function testCreateJsRun()
