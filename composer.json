@@ -1,6 +1,6 @@
 {
     "name": "jildertmiedema/laravel-plupload",
-    "description": "Laravel 5/Plupload - Handle large file uploads",
+    "description": "Laravel/Plupload - Handle large file uploads",
     "authors": [
         {
             "name": "Jildert Miedema",

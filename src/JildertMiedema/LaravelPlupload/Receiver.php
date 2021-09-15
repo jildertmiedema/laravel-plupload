@@ -70,7 +70,7 @@ class Receiver
             $this->appendData($filePath, $file);
 
             if ($chunk == $chunks - 1) {
-                $file = new UploadedFile($filePath, $originalName, 'blob', filesize($filePath), UPLOAD_ERR_OK, true); /*sizeof => filesize : fix for php 7.2*/
+                $file = new UploadedFile($filePath, $originalName, 'blob', UPLOAD_ERR_OK, true);
 
                 $result = $handler($file);
 
